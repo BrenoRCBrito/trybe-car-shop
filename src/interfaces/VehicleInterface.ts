@@ -29,7 +29,4 @@ const vehicleSchema = z.object({
     .int({ message: 'Buy_Value must be an integer' }),
 });
 
-type Vehicle = z.infer<typeof vehicleSchema>;
-
-export default Vehicle;
-export { vehicleSchema };
+export type Vehicle = z.infer<typeof vehicleSchema>;

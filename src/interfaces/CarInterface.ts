@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { Vehicle } from './VehicleInterface';
 
-const CarDoorsAndSeatsSchema = z.object({
+export const CarDoorsAndSeatsSchema = z.object({
   doorsQty: z
     .number({
       required_error: 'doorsQty is required',

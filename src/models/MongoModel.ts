@@ -13,7 +13,10 @@ abstract class MongoModel<T> implements Model<T> {
     this.model.findOne({ _id: id });
 
   delete = async (id: string): Promise<T | DeleteResult | null> =>
-    this.model.deleteOne({ _id: id });
+    this.model.findOneAndDelete({ _id: id });
+
+  update = async (id: string, obj: T) =>
+    this.model.findOneAndUpdate({ _id: id }, { ...obj }, { new: true });
 }
 
 export default MongoModel;

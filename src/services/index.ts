@@ -22,6 +22,10 @@ abstract class Service<T> {
     return this.model.readOne(id);
   }
 
+  public async update(id: string, obj: T): Promise<T | null | ServiceError> {
+    return this.model.update(id, obj);
+  }
+
   delete = async (id: string): Promise<T | DeleteResult | null> =>
     this.model.delete(id);
 }

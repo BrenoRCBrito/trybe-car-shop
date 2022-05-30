@@ -19,4 +19,16 @@ export default class CarService extends Service<Car> {
     }
     return this.model.create(obj);
   };
+
+  update = async (id: string, obj: Car): Promise<Car | ServiceError | null> => {
+    const parsedVehicle = VehicleSchema.safeParse(obj);
+    const parsedDoorsAndSeats = CarDoorsAndSeatsSchema.safeParse(obj);
+    if (!parsedVehicle.success) {
+      return { error: parsedVehicle.error };
+    }
+    if (!parsedDoorsAndSeats.success) {
+      return { error: parsedDoorsAndSeats.error };
+    }
+    return this.model.update(id, obj);
+  };
 }

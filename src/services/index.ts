@@ -1,5 +1,3 @@
-// src/services/index.ts
-
 import { ZodError } from 'zod';
 import { DeleteResult } from 'mongodb';
 import { Model } from '../interfaces/ModelInterface';
@@ -26,8 +24,9 @@ abstract class Service<T> {
     return this.model.update(id, obj);
   }
 
-  delete = async (id: string): Promise<T | DeleteResult | null> =>
-    this.model.delete(id);
+  public async delete(id: string): Promise<T | DeleteResult | null> {
+    return this.model.delete(id);
+  }
 }
 
 export default Service;
